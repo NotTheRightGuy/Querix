@@ -9,6 +9,7 @@ Please work on your own branch and only commit to main once everything looks goo
 - Docker : Postgres for Database
 - Docker : Redis for Caching/Queueing (if required bhagwan jane kya banane aa jae)
 - Shadcn / Aceternity UI whenever possible
+- Recoil : For State management
 - Tailwindcss for styling
 
 ## Notes
