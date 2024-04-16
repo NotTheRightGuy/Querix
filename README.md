@@ -15,16 +15,16 @@ Mostly authentication tel lene gaya kyuki jarurat nahi padti but jarurat pade to
 Will try to show demonstration mostly on local but agar vo bole toh host kar denge AWS pe.
 
 ## Roles
-Devvrat and Vedant : Frontend and everything related to frontend
+Devvrat and Vedant : Frontend and everything related to frontend -
 Kripa karke code aise karne ki baad me jake mere lie easy rahe sab connect karna
 
-Jeet : Branding and Designing
+Jeet : Branding and Designing -
 Everything from page design, icons, Logo, great looking presentation and color sab tujhe dekhna
 They don't care how well it works, they just care how good it looks.
 Animation if possible as well.
 And don't worry tujhe code nahi likhna.
 
-Janmejay: Backend and ML
+Janmejay: Backend and ML -
 Will mostly stick to building the product MVP if possible and if time permits will work on frontend as well
 
 **Aadhi Adani aa rahi, ek ek ki gaand maarni hai, jeetna hai chahe kuch bhi ho jae. Nahi toh internship nahi milegi, internship nahi mile to I wil just kms :)**
