@@ -8,79 +8,37 @@ import { motion, AnimatePresence } from "framer-motion";
 import FileSpreadsheet from '@/public/file-spreadsheet'
 import SendArrow from "@/public/sendArrow";
 import Avatar from "@/public/avatar";
+import Exampad from "@/public/examPad";
+import copy from "copy-to-clipboard";
+import Tick from "@/public/tick";
+import GreenDot from "@/public/green-dot";
 
 export function Dashboard() {
-    // const asideRef = useRef(null);
-
-    // const [menuItemHidden, setmenuItemHidden] = useState(true)
-
     const [dropDownMenu, setDropDownMenu] = useState(false)
-
-    // return (
-    //     <div className="antialiased flex bg-gray-50 dark:bg-gray-900">
-    //         {/* Sidebar */}
-    //         <aside
-    //             className={`top-0 left-0 z-40 w-fit h-screen overflow-x-hidden pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
-    //             aria-label="Sidenav"
-    //             ref={asideRef}
-    //             id="drawer-navigation"
-    //             onMouseEnter={() => setmenuItemHidden(!menuItemHidden)}
-    //             onMouseLeave={() => setmenuItemHidden(!menuItemHidden)}
-    //         >
-    //             <div className={`overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800 flex flex-col justify-between ${menuItemHidden ? 'items-center' : 'items-start'}`}>
-    //                 <form action="#" method="GET" className="md:hidden mb-2">
-    //                     <label htmlFor="sidebar-search" className="sr-only">
-    //                         Search
-    //                     </label>
-    //                     <div className="relative">
-    //                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-    //                             <svg
-    //                                 className="w-5 h-5 text-gray-500 dark:text-gray-400"
-    //                                 fill="currentColor"
-    //                                 viewBox="0 0 20 20"
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                             >
-    //                                 <path
-    //                                     fillRule="evenodd"
-    //                                     clipRule="evenodd"
-    //                                     d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-    //                                 />
-    //                             </svg>
-    //                         </div>
-    //                         <input
-    //                             type="text"
-    //                             name="search"
-    //                             id="sidebar-search"
-    //                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-    //                             placeholder="Search"
-    //                         />
-    //                     </div>
-    //                 </form>
-    //                 <ul className="space-y-2">
-    //                     <li>
-    //                         <a
-    //                             href="#"
-    //                             className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-    //                         >
-    //                             <svg
-    //                                 width="24"
-    //                                 height="24"
-    //                                 viewBox="0 0 24 24"
-    //                                 fill="none"
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                             >
-    //                                 <path
-    //                                     d="M16.5 18H16.125L13.65 13.5C14.025 13.125 14.25 12.6 14.25 12C14.25 10.725 13.275 9.75 12 9.75C10.725 9.75 9.75 10.725 9.75 12C9.75 12.6 9.975 13.125 10.35 13.5L7.875 18H7.5C6.225 18 5.25 18.975 5.25 20.25C5.25 21.525 6.225 22.5 7.5 22.5C8.775 22.5 9.75 21.525 9.75 20.25C9.75 19.65 9.525 19.125 9.15 18.75L11.625 14.175H12.375L14.85 18.75C14.475 19.125 14.25 19.65 14.25 20.25C14.25 21.525 15.225 22.5 16.5 22.5C17.775 22.5 18.75 21.525 18.75 20.25C18.75 18.975 17.775 18 16.5 18ZM12 11.25C12.45 11.25 12.75 11.55 12.75 12C12.75 12.45 12.45 12.75 12 12.75C11.55 12.75 11.25 12.45 11.25 12C11.25 11.55 11.55 11.25 12 11.25ZM7.5 21C7.05 21 6.75 20.7 6.75 20.25C6.75 19.8 7.05 19.5 7.5 19.5C7.95 19.5 8.25 19.8 8.25 20.25C8.25 20.7 7.95 21 7.5 21ZM16.5 21C16.05 21 15.75 20.7 15.75 20.25C15.75 19.8 16.05 19.5 16.5 19.5C16.95 19.5 17.25 19.8 17.25 20.25C17.25 20.7 16.95 21 16.5 21Z"
-    //                                     fill="black"
-    //                                 />
-    //                                 <path
-    //                                     d="M18.6 6.825C17.925 3.75 15.225 1.5 12 1.5C8.775 1.5 6.075 3.75 5.4 6.825C3.15 7.275 1.5 9.3 1.5 11.625C1.5 14.325 3.675 16.5 6.375 16.5H6.75V15H6.375C4.5 15 3 13.5 3 11.625C3 9.9 4.35 8.4 6.075 8.25H6.75L6.825 7.65C7.125 4.95 9.375 3 12 3C14.625 3 16.875 4.95 17.175 7.575L17.25 8.25L17.85 8.325C19.575 8.475 20.925 9.975 20.925 11.7C20.925 13.575 19.425 15.075 17.55 15.075H17.25V16.575H17.625C20.325 16.575 22.5 14.4 22.5 11.7C22.5 9.3 20.85 7.275 18.6 6.825Z"
-    //                                     fill="black"
-    //                                 />
-    //                             </svg>
-
     const asideRef = useRef(null);
     const [menuItemHidden, setmenuItemHidden] = useState(true);
+
+    const [copyText, setCopyText] = useState("");
+
+    const handleCopyText = async (e: any) => {
+        try {
+            const curr = e.target.parentNode.parentNode.children[1].innerText
+            await navigator.clipboard.writeText(curr);
+            // alert("Copied to clipboard!");
+        } catch (err) {
+            console.error(
+                "Unable to copy to clipboard.",
+                err
+            );
+            alert("Copy to clipboard failed.");
+        }
+    };
+
+    const copyToClipboard = () => {
+        copy(copyText);
+        alert(`You have copied "${copyText}"`);
+    };
+
     const history = [{ "text": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui." },
     { "text": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat." },
     { "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis." },
@@ -147,7 +105,7 @@ export function Dashboard() {
                                 <span className="ml-3" hidden={menuItemHidden}>SQL Concierge</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a
                                 href="#"
@@ -169,7 +127,7 @@ export function Dashboard() {
                                 <span className="ml-3" hidden={menuItemHidden}>Analytics</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a
                                 href="#"
@@ -191,7 +149,7 @@ export function Dashboard() {
                                 <span className="ml-3" hidden={menuItemHidden}>Portfolios</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a
                                 href="#"
@@ -213,7 +171,7 @@ export function Dashboard() {
                                 <span className="ml-3" hidden={menuItemHidden}>History</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a
                                 href="#"
@@ -257,7 +215,7 @@ export function Dashboard() {
                                 </span>
                             </a>
                         </li>
-                        
+
                     </ul>
                     <ul className="p-2.5 space-y-2 flex flex-row items-center justify-center space-x-2 border-t w-full border-gray-200 dark:border-gray-700">
                         <div>
@@ -330,7 +288,6 @@ export function Dashboard() {
                 </div>
             </main>
             <div className="w-2/5 flex flex-col h-screen">
-
                 <header className="flex justify-between items-center p-4 h-fit">
                     {/* <p className="opacity-100 hover:opacity-100 cursor-pointer"> */}
                     <div className="flex">
@@ -355,24 +312,7 @@ export function Dashboard() {
                         </svg>
 
                         SQL Main
-                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_12_409)">
-                                <circle cx="16" cy="16.5" r="5" fill="#22C55E" />
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_12_409" x="0" y="0.5" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feMorphology radius="4" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_12_409" />
-                                    <feOffset />
-                                    <feGaussianBlur stdDeviation="3.5" />
-                                    <feComposite in2="hardAlpha" operator="out" />
-                                    <feColorMatrix type="matrix" values="0 0 0 0 0.171056 0 0 0 0 1 0 0 0 0 0.0361112 0 0 0 0.25 0" />
-                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_12_409" />
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_12_409" result="shape" />
-                                </filter>
-                            </defs>
-                        </svg>
+                        <GreenDot></GreenDot>
                         <AnimatePresence>
 
                             <motion.div
@@ -391,25 +331,73 @@ export function Dashboard() {
 
                 </header>
                 <hr />
-                <div className="p-4 w-full h-max">
-                    <div className="flex flex-col h-full">
-                        <div className="flex gap-2 w-full">
-                            <Avatar></Avatar>
+                <div className="p-4 w-full h-5/6">
+                    <div className="flex flex-col h-full gap-4">
+                        <div className="flex flex-col   w-4/5 gap-2">
+                            <div className="flex gap-2 ">
+                                <Avatar></Avatar>
+                                <div className="flex flex-col w-full">
+                                    <div className="flex w-full justify-between">
+                                        <p>Leena AI</p>
+                                        <p className="text-gray-500">4:23 PM</p>
+                                    </div>
+                                    <div className="rounded-xl rounded-tl-none bg-blue-500 p-2.5 text-sm">
+                                        Processing your request to fetch the data. Please wait a moment while we analyze your query and prepare the results for you.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="pl-11 relative ">
+                                <button className="absolute right-0 p-2 flex items-center justify-center gap-1 bg-gray-600 rounded text-[10px] text-white" onClick={handleCopyText}>
+                                    <Exampad></Exampad>
+                                    <p>
+
+                                        Copy Code
+                                    </p>
+                                </button>
+                                <div className="bg-gray-700 p-2.5 rounded-xl text-gray-200 text-xs ">
+                                    SELECT
+                                    orders.order_id,
+                                    customers.customer_name,
+                                    products.product_name,
+                                    order_details.quantity,
+                                    order_details.unit_price,
+                                    {"(order_details.quantity * order_details.unit_price)"} AS total_price
+                                    FROM
+                                    orders
+                                    INNER JOIN
+                                    customers ON orders.customer_id = customers.customer_id
+                                    INNER JOIN
+                                    order_details ON orders.order_id = order_details.order_id
+                                    INNER JOIN
+                                    products ON order_details.product_id = products.product_id
+                                    WHERE
+                                    orders.order_date {">"}= '2023-01-01' AND orders.order_date {"<"}= '2023-12-31'
+                                    ORDER BY
+                                    orders.order_id;
+                                </div>
+
+                            </div>
+                            <div className="flex w-fit pl-11">
+                                <Tick></Tick>
+                                <p>
+                                    Query executed sucessfully
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex gap-2 w-4/5 self-end">
                             <div className="flex flex-col w-full">
                                 <div className="flex w-full justify-between">
                                     <p>Leena AI</p>
                                     <p className="text-gray-500">4:23 PM</p>
                                 </div>
-                                <div className="rounded rounded-tl-none bg-blue-500 p-2.5 text-sm">
+                                <div className="rounded-xl rounded-tl-none bg-blue-50 p-2.5 text-sm">
                                     Processing your request to fetch the data. Please wait a moment while we analyze your query and prepare the results for you.
                                 </div>
                             </div>
-                        </div>
-                        <div className="">
-                        
+                            <Avatar></Avatar>
                         </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 h-fit">
                         <Input className="focus:outline-none" />
                         <div className="bg-gray-700 hover:bg-gray-900 duration-200 cursor-pointer  flex items-center w-11 justify-center rounded ">
                             <SendArrow></SendArrow>
