@@ -23,9 +23,13 @@ export default function AuroraBackgroundDemo() {
                 <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 py-4">
                     Talk with your data, not your database
                 </div>
-                <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+                <motion.button
+                    whileHover={{
+                        scale: 1.1,
+                    }}
+                className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
                     Get Started Now
-                </button>
+                </motion.button>
             </motion.div>
         </AuroraBackground>
     );
