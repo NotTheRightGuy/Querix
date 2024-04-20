@@ -1,3 +1,5 @@
+"use client"
+
 import {motion, AnimatePresence} from "framer-motion";
 import { useState } from "react";
 import GreenDot from "@/public/green-dot";

@@ -63,7 +63,7 @@ export default function UserPermission() {
                     </button>
                 </header>
                 <div className="w-full px-4 mt-10 rounded-xl">
-                    <header className="p-2 bg-gray-100 flex justify-between rounded-t-xl w-full font-bold">
+                    <header className="p-4 bg-gray-100 flex justify-between rounded-t-xl w-full font-bold">
                         <p className="w-1/4"> Name </p>
                         <p className="w-1/4"> Email address </p>
                         <p className="w-1/4"> Database </p>
@@ -71,7 +71,7 @@ export default function UserPermission() {
                     </header>
                     {
                         users.map((user, index) => (
-                            <div key={index} className="p-2 border-[1px] border-t-0 flex justify-between items-center text-sm w-full"
+                            <div key={index} className="p-2 px-4 border-[1px] border-t-0 flex justify-between items-center text-sm w-full"
                                 onClick={() => {
                                     setSelectedUser(user);
                                 }}
