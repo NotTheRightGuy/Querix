@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.0.1",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.1.7",
@@ -18,7 +22,9 @@
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-markdown": "^9.0.1",
     "recoil": "^0.7.7",
+    "remark-gfm": "^4.0.0",
     "resend": "^3.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
