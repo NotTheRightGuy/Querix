@@ -1,40 +1,36 @@
-Please work on your own branch and only commit to main once everything looks good. Baad me theek karne me maut aati nahi toh.
-***Go through this once as well : https://twitter.com/i/bookmarks?post_id=1752981587321659836*** <br/>
-*Last me proper README.md banega during presentaion phase,until then keep this only, make sure you join all teams*
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Stacks we prolly will be using
-- NextJs for frontend and backend
-- Express/Cloudflare Workers for Microservices
-- Prisma for ORM
-- Docker : Postgres for Database
-- Docker : Redis for Caching/Queueing (if required bhagwan jane kya banane aa jae)
-- Shadcn / Aceternity UI whenever possible
-- Recoil : For State management
-- Tailwindcss for styling
+## Getting Started
 
-## Notes
-Mostly authentication tel lene gaya kyuki jarurat nahi padti but jarurat pade toh clerk FTW.
+First, run the development server:
 
-Will try to show demonstration mostly on local but agar vo bole toh host kar denge AWS pe.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Roles
-Devvrat and Vedant : Frontend and everything related to frontend -
-Kripa karke code aise karne ki baad me jake mere lie easy rahe sab connect karna
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Jeet : Branding and Designing -
-Everything from page design, icons, Logo, animations, great looking presentation and colors sab tujhe dekhna
-They don't care how well it works, they just care how good it looks.
-And don't worry tujhe code nahi likhna.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Janmejay: Backend and ML -
-Will mostly stick to building the product MVP if possible and if time permits will work on frontend as well.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Learn More
 
-**Aadhi Adani aa rahi, ek ek ki gaand maarni hai, jeetna hai chahe kuch bhi ho jae. Nahi toh internship nahi milegi, internship nahi mile to I wil just kms :)**
+To learn more about Next.js, take a look at the following resources:
 
-## Team links (Join kar lena)
-1. Linear Team (Project Management) :- https://linear.app/nothackathons/join/27ec68a3699efc077299ace53d56e293?s=4
-2. Figma File (Designing and Jeet ka area) :- https://www.figma.com/file/Pxhk5AaCjmfUb8mgbZv3fF/HackNUThon-5.0?type=design&mode=design&t=JKnloxOZQUnCHIrp-1
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<img width="1602" alt="Hackathon Workflow" src="https://github.com/NotTheRightGuy/hacknuthon5.0/assets/70024430/3928f00c-0361-42f6-a8e8-59fcc4a621b8">
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
