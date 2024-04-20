@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import Icon from "../ui/icon";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,12 +12,14 @@ import Tick from "@/public/tick";
 import GreenDot from "@/public/green-dot";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
-
+import completedOnBoard from "@/store/atom/completedOnBoard";
+import { useRecoilValue } from "recoil";
+import {OnBoarding} from "@/components/pages/OnBoarding"
 export function Dashboard() {
   const [dropDownMenu, setDropDownMenu] = useState(false);
   const asideRef = useRef(null);
   const [menuItemHidden, setmenuItemHidden] = useState(true);
-
+  const onBoarded = useRecoilValue(completedOnBoard);
   const handleCopyText = async (e: any) => {
     try {
       const curr = e.target.parentNode.parentNode.children[1].innerText;
@@ -294,7 +296,9 @@ export function Dashboard() {
           </ul>
         </div>
       </aside>
-      <main className="h-screen flex flex-row items-center justify-start ">
+      {
+        onBoarded ? (<>
+        <main className="h-screen flex flex-row items-center justify-start ">
         <div
           className={`flex flex-col items-center justify-start h-screen w-60 border border-r-[#CDD7E1]`}
         >
@@ -500,6 +504,9 @@ export function Dashboard() {
           </SyntaxHighlighter>
         </div>
       </div>
+        </>):<OnBoarding></OnBoarding>
+      }
+      
     </div>
   );
 }
