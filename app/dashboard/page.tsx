@@ -1,12 +1,5 @@
-import { Dashboard } from '@/components/pages/dashboard'
-import React from 'react'
-function DashbaordPage() {
-  return (
-    <div>
-        <Dashboard></Dashboard>
-        
-    </div>
-  )
-}
+import { Dashboard } from "@/components/pages/dashboard";
 
-export default DashbaordPage
+export default function DashbaordPage() {
+    return <Dashboard />;
+}
