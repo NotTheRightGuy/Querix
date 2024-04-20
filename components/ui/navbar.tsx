@@ -21,10 +21,11 @@ export default function Navbar(props:any) {
 
             </div>
             <motion.div
+                whileTap={{ scale: 0.95 }}
                 onClick={() => {
                     setDropDownMenu(!dropDownMenu);
                 }}
-                className="border-[#D1D5DB] relative border-solid border-2 rounded-xl px-2 p-1 flex items-center gap-1 cursor-pointer"
+                className="border-[#D1D5DB] relative border-solid border-2 rounded-xl px-2 p-1 flex items-center gap-1 cursor-pointer select-none"
             >
                 <svg
                     width="18"
