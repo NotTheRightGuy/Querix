@@ -3,12 +3,15 @@
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import useTerminalChat from "@/store/hook/useTerminalChat";
+import useCurrentlyExecuting from "@/store/hook/useCurrentlyExecuting";
 
 export default function Terminal() {
-    const [code, setCode] = useState("SELECT * FROM MISERY");
+    const codes = useTerminalChat();
+    const currentCommand = useCurrentlyExecuting();
 
     return (
-        <div className="w-full flex flex-col justify-between h-screen border-l-2 border-slate-100">
+        <div className="w-full flex flex-col relative h-screen border-l-2 border-slate-100">
             <header className="flex justify-between items-center p-4 h-16 border-b">
                 <div className="flex">
                     <svg
@@ -37,11 +40,28 @@ export default function Terminal() {
                     <p className="w-fit">Terminal</p>
                 </div>
             </header>
-            <div className="pl-2 pb-4 flex items-center justify-start text-gray-800 text-xs">
-                <div>{">>"}</div>
+            <div className="pl-2 pb-4 flex flex-col absolute bottom-0 justify-start text-gray-800 text-xs  w-full">
+                {codes.map((code, index) => (
+                    <div key={index} className="flex flex-col p-4">
+                        <div className="flex">
+                            <p className="text-gray-800">
+                                {" "}
+                                {"~ > "}
+                                {code.command}
+                            </p>
+                        </div>
+                        <div className="flex">
+                            <p className="text-gray-800">{code.output}</p>
+                        </div>
+                    </div>
+                ))}
 
-                <SyntaxHighlighter language="sql" style={a11yLight}>
-                    {code}
+                <SyntaxHighlighter
+                    language="sql"
+                    style={a11yLight}
+                    wrapLongLines={true}
+                >
+                    {"~ > " + currentCommand}
                 </SyntaxHighlighter>
             </div>
         </div>
