@@ -5,48 +5,49 @@ import Icon from "../ui/icon";
 
 export function Dashboard() {
   const asideRef = useRef(null);
-  const [menuItemHidden, setmenuItemHidden] = useState(true)
+  const [menuItemHidden, setmenuItemHidden] = useState(true);
+  const history = [{"text":"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui."},
+  {"text":"Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat."},
+  {"text":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."},
+  {"text":"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat."},
+  {"text":"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."},
+  {"text":"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum."},
+  {"text":"Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."},
+  {"text":"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."},
+  {"text":"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem."},
+  {"text":"Fusce consequat. Nulla nisl. Nunc nisl."},
+  {"text":"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus."},
+  {"text":"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst."},
+  {"text":"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus."},
+  {"text":"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus."},
+  {"text":"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."},
+  {"text":"Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet."},
+  {"text":"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."},
+  {"text":"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."},
+  {"text":"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum."},
+  {"text":"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."}];
   return (
-    <div className="antialiased bg-gray-50 dark:bg-gray-900">
+    <div className="antialiased bg-gray-50 dark:bg-gray-900 flex flex-row items-center justify-start">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-40 w-fit h-screen overflow-x-hidden pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+        className={`z-40 h-screen overflow-x-hidden  transition-transform -translate-x-full bg-white  border-[#CDD7E1] md:translate-x-0 dark:bg-gray-800 border-r dark:border-gray-700 ${
+          menuItemHidden ? "w-24" : "w-fit"
+        }`}
         aria-label="Sidenav"
         ref={asideRef}
         id="drawer-navigation"
-        onMouseEnter={()=> setmenuItemHidden(!menuItemHidden)}
-        onMouseLeave={()=> setmenuItemHidden(!menuItemHidden)}
+        onMouseEnter={() => setmenuItemHidden(!menuItemHidden)}
+        onMouseLeave={() => setmenuItemHidden(!menuItemHidden)}
       >
-        <div className={`overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800 flex flex-col justify-between ${menuItemHidden? 'items-center': 'items-start'}`}>
-          <form action="#" method="GET" className="md:hidden mb-2">
-            <label htmlFor="sidebar-search" className="sr-only">
-              Search
-            </label>
-            <div className="relative">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg
-                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  />
-                </svg>
-              </div>
-              <input
-                type="text"
-                name="search"
-                id="sidebar-search"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Search"
-              />
-            </div>
-          </form>
+        <div
+          className={`overflow-y-auto px-2 h-full bg-white dark:bg-gray-800 flex flex-col justify-between items-center`}
+        >
+          
           <ul className="space-y-2">
+            <div className="pt-6 mb-10">
+          <Icon />
+
+            </div>
             <li>
               <a
                 href="#"
@@ -69,9 +70,11 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>SQL Concierge</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  SQL Concierge
+                </span>
               </a>
-            </li>
+            </li> 
             <li>
               <a
                 href="#"
@@ -90,7 +93,9 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>Analytics</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  Analytics
+                </span>
               </a>
             </li>
             <li>
@@ -111,7 +116,9 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>Portfolios</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  Portfolios
+                </span>
               </a>
             </li>
             <li>
@@ -132,7 +139,9 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>History</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  History
+                </span>
               </a>
             </li>
             <li>
@@ -153,7 +162,9 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>Settings</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  Settings
+                </span>
               </a>
             </li>
             <li>
@@ -174,11 +185,13 @@ export function Dashboard() {
                   />
                 </svg>
 
-                <span className="ml-3" hidden={menuItemHidden}>Support</span>
+                <span className="ml-3" hidden={menuItemHidden}>
+                  Support
+                </span>
               </a>
             </li>
           </ul>
-          <ul className="pt-5 mt-5 space-y-2 flex flex-row space-x-2 border-t w-full border-gray-200 dark:border-gray-700">
+          <ul className="p-2.5 space-y-2 flex flex-row items-center justify-center space-x-2 border-t w-full border-gray-200 dark:border-gray-700">
             <div>
               <svg
                 width="48"
@@ -201,49 +214,51 @@ export function Dashboard() {
                 </defs>
               </svg>
             </div>
-            <div className="text-left" hidden={menuItemHidden}>
-              <p>Jet Gajjar</p>
-              <p className="text-gray-500 text-xs ml-0.5">
-                jeetgajjar@gmail.com
-              </p>
+            <div className="text-left " hidden={menuItemHidden}>
+              <div>
+                <p>Jeet Gajjar</p>
+                <p className="text-gray-500 text-xs ml-0.5">
+                  jeetgajjar@gmail.com
+                </p>
+              </div>
             </div>
-            <div hidden={menuItemHidden}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.1667 5.83333L12.9917 7.00833L15.1417 9.16667H6.66675V10.8333H15.1417L12.9917 12.9833L14.1667 14.1667L18.3334 10L14.1667 5.83333ZM3.33341 4.16667H10.0001V2.5H3.33341C2.41675 2.5 1.66675 3.25 1.66675 4.16667V15.8333C1.66675 16.75 2.41675 17.5 3.33341 17.5H10.0001V15.8333H3.33341V4.16667Z"
-                  fill="#636B74"
-                />
-              </svg>
+            <div hidden={menuItemHidden} className="">
+              
             </div>
           </ul>
         </div>
       </aside>
-      <main className="p-4 md:ml-64 h-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-          <div className="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64" />
-        </div>
-        <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4" />
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-        </div>
-        <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4" />
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
-          <div className="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72" />
+      <main className="h-screen flex flex-row items-center justify-start ">
+        <div
+          className={`flex flex-col items-center justify-start h-screen w-60 border border-r-[#CDD7E1]`}
+        >
+          <div className="w-full flex flex-col space-y-2 justify-between items-start  overflow-y-scroll">
+            <p className="font-bold text-2xl px-2 pt-4">Chats</p>
+            <p className="font-normal text-sm text-gray-700 px-2">Todays</p>
+            <div className="flex flex-col items-start justify-center">
+              {history.map((item) => (
+                <div
+                  className="bg-transparent overflow-hidden text-ellipsis h-8 text-black hover:bg-gray-100 text-sm cursor-pointer p-2 rounded-[6px]"
+                  key={Math.random()}
+                >
+                  {item.text}
+                </div>
+              ))}
+              
+            </div>
+            <p className="font-normal text-sm text-gray-700">Yesterdays</p>
+            <div className="flex flex-col items-start justify-center">
+              {history.map((item) => (
+                <div
+                  className="bg-transparent overflow-hidden text-ellipsis h-8 text-black hover:bg-gray-100 text-sm cursor-pointer p-2 rounded-[6px]"
+                  key={Math.random()}
+                >
+                  {item.text}
+                </div>
+              ))}
+              
+            </div>
+          </div>
         </div>
       </main>
     </div>
