@@ -56,7 +56,7 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3 absolute left-20">
+                            <span className="ml-3 absolute left-20 w-[250px]">
                                 SQL Concierge
                             </span>
                         </a>
