@@ -17,27 +17,22 @@ export default function Sidebar() {
                 duration: 0.3,
             },
         },
-        animate: {
-            width: "auto",
-            transition: {
-                duration: 0.3,
-            },
-        },
     };
 
     return (
         <motion.aside
-            className={`z-40 h-screen overflow-x-hidden bg-white  border-[#CDD7E1]  border-r`}
+            className="z-40 h-screen overflow-clip fixed ml-4  left-0 bg-white border-[#CDD7E1] border-r "
             variants={variants}
             initial="initial"
             aria-label="Sidenav"
             id="drawer-navigation"
+            whileHover={{ width: "auto" }}
         >
             <div
-                className={`overflow-y-auto px-2 h-full bg-white dark:bg-gray-800 flex flex-col justify-between items-center`}
+                className={`overflow-y-auto px-2 h-full bg-white dark:bg-gray-800 flex flex-col justify-between`}
             >
                 <ul className="space-y-2">
-                    <div className="pt-6 mb-10">
+                    <div className="my-4">
                         <Icon />
                     </div>
                     <li>
@@ -62,7 +57,7 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3" hidden={menuItemHidden}>
+                            <span className="ml-3 absolute left-20">
                                 SQL Concierge
                             </span>
                         </a>
@@ -86,7 +81,7 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3" hidden={menuItemHidden}>
+                            <span className="ml-3 absolute left-20">
                                 Analytics
                             </span>
                         </a>
@@ -110,7 +105,7 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3" hidden={menuItemHidden}>
+                            <span className="ml-3 absolute left-20">
                                 Portfolios
                             </span>
                         </a>
@@ -134,7 +129,7 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3" hidden={menuItemHidden}>
+                            <span className="ml-3 absolute left-20">
                                 History
                             </span>
                         </a>
@@ -158,13 +153,13 @@ export default function Sidebar() {
                                 />
                             </svg>
 
-                            <span className="ml-3" hidden={menuItemHidden}>
+                            <span className="ml-3 absolute left-20">
                                 Settings
                             </span>
                         </a>
                     </li>
                 </ul>
-                <ul className="p-2.5 space-y-2 flex flex-row items-center justify-center space-x-2 border-t w-full border-gray-200 dark:border-gray-700">
+                <ul className="flex flex-row gap-x-2 mt-2 py-3 px-1 items-center border-t border-gray-200 ">
                     <div>
                         <svg
                             width="48"
@@ -197,12 +192,10 @@ export default function Sidebar() {
                             </defs>
                         </svg>
                     </div>
-                    <div className="text-left " hidden={menuItemHidden}>
+                    <div className="overflow-clip">
                         <div>
                             <p>{name}</p>
-                            <p className="text-gray-500 text-xs ml-0.5">
-                                {email}
-                            </p>
+                            <p className="text-gray-500 text-xs">{email}</p>
                         </div>
                     </div>
                 </ul>

@@ -8,8 +8,7 @@ export default function Header() {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 
     return (
-        <header className="flex justify-between items-center p-4 h-16 border-b">
-            {/* <p className="opacity-100 hover:opacity-100 cursor-pointer"> */}
+        <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%]">
             <div className="flex">
                 <svg
                     width="24"
@@ -26,12 +25,9 @@ export default function Header() {
                         stroke-linejoin="round"
                     />
                 </svg>
-                <p className="w-fit">Login Information of EMP</p>
+                <p className="w-fit pl-2">Login Information of EMP</p>
             </div>
             <motion.div
-                whileTap={{
-                    scale: 0.8,
-                }}
                 onClick={() => {
                     setDropDownMenu(!dropDownMenu);
                 }}

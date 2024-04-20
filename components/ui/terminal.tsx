@@ -8,7 +8,7 @@ export default function Terminal() {
     const [code, setCode] = useState("SELECT * FROM MISERY");
 
     return (
-        <div className="w-[20%] flex flex-col justify-between h-screen">
+        <div className="w-full flex flex-col justify-between h-screen border-l-2 border-slate-100">
             <header className="flex justify-between items-center p-4 h-16 border-b">
                 <div className="flex">
                     <svg
@@ -37,7 +37,7 @@ export default function Terminal() {
                     <p className="w-fit">Terminal</p>
                 </div>
             </header>
-            <div className="pl-2  flex items-center justify-start text-gray-800 text-xs">
+            <div className="pl-2 pb-4 flex items-center justify-start text-gray-800 text-xs">
                 <div>{">>"}</div>
 
                 <SyntaxHighlighter language="sql" style={a11yLight}>
