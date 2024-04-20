@@ -24,9 +24,8 @@ export default function Sidebar() {
             className="z-40 h-screen overflow-clip fixed ml-4  left-0 bg-white border-[#CDD7E1] border-r "
             variants={variants}
             initial="initial"
-            aria-label="Sidenav"
             id="drawer-navigation"
-            whileHover={{ width: "auto" }}
+            whileHover={{ width: "250px" }}
         >
             <div
                 className={`overflow-y-auto px-2 h-full bg-white dark:bg-gray-800 flex flex-col justify-between`}
@@ -159,7 +158,7 @@ export default function Sidebar() {
                         </a>
                     </li>
                 </ul>
-                <ul className="flex flex-row gap-x-2 mt-2 py-3 px-1 items-center border-t border-gray-200 ">
+                <ul className="flex flex-row gap-x-6 mt-2 py-3 px-1 items-center border-t border-gray-200 ">
                     <div>
                         <svg
                             width="48"
