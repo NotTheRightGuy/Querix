@@ -66,7 +66,7 @@
 // If you'd like to contribute to this project, please follow the [contribution guidelines](CONTRIBUTING.md).
 "use client"
 // import {createRoot} from 'react-dom/client'
-import Markdown from 'react-markdown'
+// import Markdown from 'react-markdown'
 
 const markdown = '# Hi, *Pluto*!'
 
