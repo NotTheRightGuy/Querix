@@ -8,7 +8,7 @@ export default function Header() {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 
     return (
-        <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%]">
+        <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%] bg-white">
             <div className="flex">
                 <svg
                     width="24"
