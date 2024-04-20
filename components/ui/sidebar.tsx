@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Icon from "../ui/icon";
+import Icon from "../../public/icon";
 import { motion } from "framer-motion";
 
 export default function Sidebar() {

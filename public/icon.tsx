@@ -1,4 +1,6 @@
-export default function BlueFrame() {
+import React from "react";
+
+function Icon() {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="48" height="48" rx="12.88" fill="#1D4ED8"/>
@@ -7,3 +9,5 @@ export default function BlueFrame() {
 
   );
 }
+
+export default Icon;
