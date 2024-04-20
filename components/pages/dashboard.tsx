@@ -3,17 +3,36 @@
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import Icon from "../ui/icon";
-import SyntaxHighlighter from "react-syntax-highlighter";
 import { motion, AnimatePresence } from "framer-motion";
 import FileSpreadsheet from "@/public/file-spreadsheet";
 import SendArrow from "@/public/sendArrow";
 import Avatar from "@/public/avatar";
+import Exampad from "@/public/examPad";
+import Tick from "@/public/tick";
+import GreenDot from "@/public/green-dot";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { a11yLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export function Dashboard() {
   const [dropDownMenu, setDropDownMenu] = useState(false);
   const asideRef = useRef(null);
   const [menuItemHidden, setmenuItemHidden] = useState(true);
+
+  const handleCopyText = async (e: any) => {
+    try {
+      const curr = e.target.parentNode.parentNode.children[1].innerText;
+      await navigator.clipboard.writeText(curr);
+      // alert("Copied to clipboard!");
+    } catch (err) {
+      console.error("Unable to copy to clipboard.", err);
+      alert("Copy to clipboard failed.");
+    }
+  };
+  const [code, setCode] = useState("");
+  useEffect(() => {
+    setCode("CREATE TABLE DEVVRAT");
+  }, []);
+
   const history = [
     {
       text: "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
@@ -74,12 +93,6 @@ export function Dashboard() {
       text: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
     },
   ];
-  const [Code, setCode] = useState<any>("");
-  useEffect(() => {
-    setCode('CREATE TABLE DEVVRAT;');
-  
-  }, [])
-  
   return (
     <div className="antialiased bg-gray-50 dark:bg-gray-900 flex flex-row items-center justify-start">
       {/* Sidebar */}
@@ -91,7 +104,7 @@ export function Dashboard() {
         ref={asideRef}
         id="drawer-navigation"
         onMouseEnter={() => setmenuItemHidden(!menuItemHidden)}
-        onMouseLeave={() => setmenuItemHidden(true)}
+        onMouseLeave={() => setmenuItemHidden(!menuItemHidden)}
       >
         <div
           className={`overflow-y-auto px-2 h-full bg-white dark:bg-gray-800 flex flex-col justify-between items-center`}
@@ -281,14 +294,12 @@ export function Dashboard() {
           </ul>
         </div>
       </aside>
-      <div className="h-screen flex flex-row items-center justify-start ">
+      <main className="h-screen flex flex-row items-center justify-start ">
         <div
-          className={`flex flex-col items-center justify-start h-screen w-60 border  border-r-[#CDD7E1]`}
+          className={`flex flex-col items-center justify-start h-screen w-60 border border-r-[#CDD7E1]`}
         >
-          <div className="w-full flex flex-col relative space-y-2 justify-between items-start pt-14 overflow-y-scroll">
-            <p className="font-bold text-2xl px-2 fixed top-0 pt-4 bg-[#F9FAFB] w-[238px]">
-              Chats
-            </p>
+          <div className="w-full flex flex-col space-y-2 justify-between items-start  overflow-y-scroll">
+            <p className="font-bold text-2xl px-2 pt-4">Chats</p>
             <p className="font-normal text-sm text-gray-700 px-2">Todays</p>
             <div className="flex flex-col items-start justify-center">
               {history.map((item) => (
@@ -313,8 +324,8 @@ export function Dashboard() {
             </div>
           </div>
         </div>
-      </div>
-      <div className=" border border-gray-200 flex flex-grow flex-col h-screen">
+      </main>
+      <div className="w-2/5 flex flex-grow flex-col h-screen border-r">
         <header className="flex justify-between items-center p-4 h-16 border-b">
           {/* <p className="opacity-100 hover:opacity-100 cursor-pointer"> */}
           <div className="flex">
@@ -360,60 +371,7 @@ export function Dashboard() {
               />
             </svg>
             SQL Main
-            <svg
-              width="32"
-              height="33"
-              viewBox="0 0 32 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g filter="url(#filter0_d_12_409)">
-                <circle cx="16" cy="16.5" r="5" fill="#22C55E" />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_d_12_409"
-                  x="0"
-                  y="0.5"
-                  width="32"
-                  height="32"
-                  filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
-                >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feMorphology
-                    radius="4"
-                    operator="dilate"
-                    in="SourceAlpha"
-                    result="effect1_dropShadow_12_409"
-                  />
-                  <feOffset />
-                  <feGaussianBlur stdDeviation="3.5" />
-                  <feComposite in2="hardAlpha" operator="out" />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0.171056 0 0 0 0 1 0 0 0 0 0.0361112 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="BackgroundImageFix"
-                    result="effect1_dropShadow_12_409"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="effect1_dropShadow_12_409"
-                    result="shape"
-                  />
-                </filter>
-              </defs>
-            </svg>
+            <GreenDot></GreenDot>
             <AnimatePresence>
               <motion.div
                 className={`${
@@ -434,25 +392,66 @@ export function Dashboard() {
             </AnimatePresence>
           </motion.div>
         </header>
-        <div className="p-4 w-full h-max">
-          <div className="flex flex-col h-full">
-            <div className="flex gap-2 w-full">
-              <Avatar></Avatar>
+        <div className="p-4 w-full h-5/6">
+          <div className="flex flex-col h-full gap-4">
+            <div className="flex flex-col   w-4/5 gap-2">
+              <div className="flex gap-2 ">
+                <Avatar></Avatar>
+                <div className="flex flex-col w-full">
+                  <div className="flex w-full justify-between">
+                    <p>Leena AI</p>
+                    <p className="text-gray-500">4:23 PM</p>
+                  </div>
+                  <div className="rounded-xl rounded-tl-none bg-blue-500 p-2.5 text-sm">
+                    Processing your request to fetch the data. Please wait a
+                    moment while we analyze your query and prepare the results
+                    for you.
+                  </div>
+                </div>
+              </div>
+              <div className="pl-11 relative ">
+                <button
+                  className="absolute right-0 p-2 flex items-center justify-center gap-1 bg-gray-600 rounded text-[10px] text-white"
+                  onClick={handleCopyText}
+                >
+                  <Exampad></Exampad>
+                  <p>Copy Code</p>
+                </button>
+                <div className="bg-gray-700 p-2.5 rounded-xl text-gray-200 text-xs ">
+                  SELECT orders.order_id, customers.customer_name,
+                  products.product_name, order_details.quantity,
+                  order_details.unit_price,
+                  {"(order_details.quantity * order_details.unit_price)"} AS
+                  total_price FROM orders INNER JOIN customers ON
+                  orders.customer_id = customers.customer_id INNER JOIN
+                  order_details ON orders.order_id = order_details.order_id
+                  INNER JOIN products ON order_details.product_id =
+                  products.product_id WHERE orders.order_date {">"}=
+                  '2023-01-01' AND orders.order_date {"<"}= '2023-12-31' ORDER
+                  BY orders.order_id;
+                </div>
+              </div>
+              <div className="flex w-fit pl-11">
+                <Tick></Tick>
+                <p>Query executed sucessfully</p>
+              </div>
+            </div>
+            <div className="flex gap-2 w-4/5 self-end">
               <div className="flex flex-col w-full">
                 <div className="flex w-full justify-between">
                   <p>Leena AI</p>
                   <p className="text-gray-500">4:23 PM</p>
                 </div>
-                <div className="rounded rounded-tl-none bg-blue-500 p-2.5 text-sm">
+                <div className="rounded-xl rounded-tl-none bg-blue-50 p-2.5 text-sm">
                   Processing your request to fetch the data. Please wait a
                   moment while we analyze your query and prepare the results for
                   you.
                 </div>
               </div>
+              <Avatar></Avatar>
             </div>
-            <div className=""></div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 h-fit">
             <Input className="focus:outline-none" />
             <div className="bg-gray-700 hover:bg-gray-900 duration-200 cursor-pointer  flex items-center w-11 justify-center rounded ">
               <SendArrow></SendArrow>
@@ -493,15 +492,12 @@ export function Dashboard() {
             <p className="w-fit">Terminal</p>
           </div>
         </header>
-        <div className="pl-2 flex items-center justify-start text-gray-800 text-xs">
-          <div>
-          {">>"}  
-          </div>
-          
-            <SyntaxHighlighter language="sql" style={a11yLight}>
-              {Code}
-            </SyntaxHighlighter>
-          
+        <div className="pl-2  flex items-center justify-start text-gray-800 text-xs">
+          <div>{">>"}</div>
+
+          <SyntaxHighlighter language="sql" style={a11yLight}>
+            {code}
+          </SyntaxHighlighter>
         </div>
       </div>
     </div>
