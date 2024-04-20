@@ -1,31 +1,22 @@
-"use client";
-
-import { motion, AnimatePresence } from "framer-motion";
-import GreenDot from "@/public/green-dot";
+import {motion, AnimatePresence} from "framer-motion";
 import { useState } from "react";
-
-export default function Header() {
+import GreenDot from "@/public/green-dot";
+export default function Navbar() {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 
     return (
-        <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%] bg-white">
-            <div className="flex">
-                <svg
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M15 18.5L9 12.5L15 6.5"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
+        <div className="flex w-full justify-between p-4 items-center">
+            <div className="flex ">
+
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15.5V11H10.5V15.5H14.25V9.5H16.5L9 2.75L1.5 9.5H3.75V15.5H7.5Z" fill="#636B74" />
                 </svg>
-                <p className="w-fit pl-2">Login Information of EMP</p>
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.27875 5L6.22125 6.0575L9.65625 9.5L6.22125 12.9425L7.27875 14L11.7788 9.5L7.27875 5Z" fill="#636B74" />
+                </svg>
+
+                <p>Roles and Permissions</p>
+
             </div>
             <motion.div
                 onClick={() => {
@@ -54,11 +45,10 @@ export default function Header() {
                 </div>
                 <AnimatePresence>
                     <motion.div
-                        className={`${
-                            dropDownMenu
+                        className={`${dropDownMenu
                                 ? "absolute top-12 right-1 bg-white"
                                 : "hidden"
-                        } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
+                            } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
                     >
                         <h3 className="p-2 w-max">Select Database</h3>
                         <hr />
@@ -79,6 +69,7 @@ export default function Header() {
                     </motion.div>
                 </AnimatePresence>
             </motion.div>
-        </header>
-    );
+
+        </div>
+    )
 }

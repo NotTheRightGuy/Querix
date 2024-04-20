@@ -24,7 +24,6 @@ export default function Sidebar() {
             className="z-40 h-screen overflow-clip fixed ml-4  left-0 bg-white border-[#CDD7E1] border-r "
             variants={variants}
             initial="initial"
-            aria-label="Sidenav"
             id="drawer-navigation"
             whileHover={{ width: "250px" }}
         >
