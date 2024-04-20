@@ -1,3 +1,5 @@
+"use client"
+
 import {motion, AnimatePresence} from "framer-motion";
 import { useState } from "react";
 import GreenDot from "@/public/green-dot";
@@ -7,7 +9,6 @@ export default function Navbar(props:any) {
     return (
         <div className="flex w-full justify-between p-4 items-center">
             <div className="flex ">
-
                 <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.5 15.5V11H10.5V15.5H14.25V9.5H16.5L9 2.75L1.5 9.5H3.75V15.5H7.5Z" fill="#636B74" />
                 </svg>
@@ -21,10 +22,11 @@ export default function Navbar(props:any) {
 
             </div>
             <motion.div
+                whileTap={{ scale: 0.95 }}
                 onClick={() => {
                     setDropDownMenu(!dropDownMenu);
                 }}
-                className="border-[#D1D5DB] relative border-solid border-2 rounded-xl px-2 p-1 flex items-center gap-1 cursor-pointer"
+                className="border-[#D1D5DB] relative border-solid border-2 rounded-xl px-2 p-1 flex items-center gap-1 cursor-pointer select-none"
             >
                 <svg
                     width="18"
