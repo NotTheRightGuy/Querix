@@ -49,7 +49,9 @@ export default function Header() {
                     />
                 </svg>
                 SQL Main
-                <GreenDot></GreenDot>
+                <div className="animate-pulse">
+                    <GreenDot />
+                </div>
                 <AnimatePresence>
                     <motion.div
                         className={`${
