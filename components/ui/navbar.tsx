@@ -1,7 +1,7 @@
 import {motion, AnimatePresence} from "framer-motion";
 import { useState } from "react";
 import GreenDot from "@/public/green-dot";
-export default function Navbar() {
+export default function Navbar(props:any) {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 
     return (
@@ -15,7 +15,9 @@ export default function Navbar() {
                     <path d="M7.27875 5L6.22125 6.0575L9.65625 9.5L6.22125 12.9425L7.27875 14L11.7788 9.5L7.27875 5Z" fill="#636B74" />
                 </svg>
 
-                <p>Roles and Permissions</p>
+                <p className="text-blue-500 text-sm">
+                    {props.currPage}
+                </p>
 
             </div>
             <motion.div
