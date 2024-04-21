@@ -21,7 +21,7 @@ export default function Sidebar() {
 
     return (
         <motion.aside
-            className="z-40 h-screen overflow-clip fixed ml-4  left-0 bg-[#F9FAFB] border-[#CDD7E1] border-r "
+            className="z-[1000] h-screen overflow-clip fixed   left-0 bg-[#F9FAFB] border-[#CDD7E1] border-r "
             variants={variants}
             initial="initial"
             id="drawer-navigation"
