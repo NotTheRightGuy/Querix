@@ -1,4 +1,14 @@
 import { atom } from "recoil";
+// create type for storign sql database in atom
+type Schema = {
+    [table: string]: {
+        name: string;
+        type: string;
+        nullable: boolean;
+        default: string | null;
+        primary_key: boolean;
+    }[];
+};
 
 const schemaExample = {
     cabins: [

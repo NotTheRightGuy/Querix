@@ -1,8 +1,13 @@
-//create an atom for connection string
 import { atom } from "recoil";
-const connectionString = atom({
+
+// create an atom for connection string
+type connection_str = {
+  connection_string: string;
+};
+
+const connectionString = atom<connection_str[]>({
   key: "connectionString",
-  default: "postgres://postgres.wnbcdxihtfyqffzpvdgo:g0dN7XK4Ss977P8B@aws-0-ap-south-1.pooler.supabase.com:5432/postgres",
+  default: [],
 });
 
 export default connectionString;
