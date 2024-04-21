@@ -15,7 +15,7 @@ export function Dashboard() {
     const { usingDDL, setUsingDDL } = useIsUsingDDL();
 
     return (
-        <div className={`${onBoardComplete ? "pl-20 " : ""} flex`}>
+        <div className={`${onBoardComplete ? "pl-24 " : ""} flex`}>
             <Sidebar />
             {onBoardComplete ? (
                 <>
@@ -31,7 +31,7 @@ export function Dashboard() {
             )}
 
             {!usingDDL && (
-                <div className="fixed right-0 w-1/4">
+                <div className="fixed right-0 w-1/4 border-l-[1px] z-50">
                     <Terminal />
                 </div>
             )}

@@ -4,7 +4,7 @@ import User from "@/public/user";
 import SQLQuery from "./sqlQuery";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-export default function PreviousChats(props:any) {
+export default function PreviousChats() {
     const [previousMessages, setPreviousMessages] = useState([]);
     const { user, isSignedIn } = useUser();
     const [currUser, setCurrUser] = useState(null);

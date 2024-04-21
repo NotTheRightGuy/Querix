@@ -8,6 +8,8 @@ import { useUser} from '@clerk/nextjs'
 export default function Navbar(props:any) {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 
+    const [currSelectedDatabase, setCurrSelectedDatabase] = useState("SQL Main");
+
     return (
         <div className="flex w-full justify-between p-4 items-center">
             <div className="flex ">
@@ -45,34 +47,44 @@ export default function Navbar(props:any) {
                         strokeLinejoin="round"
                     />
                 </svg>
-                SQL Main
+                {currSelectedDatabase}
                 <div className="animate-pulse">
                     <GreenDot />
                 </div>
                 <AnimatePresence>
-                    <motion.div
-                        className={`${dropDownMenu
-                                ? "absolute top-12 right-1 bg-white"
-                                : "hidden"
-                            } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
-                    >
-                        <h3 className="p-2 w-max">Select Database</h3>
-                        <hr />
-                        <div className="flex flex-col px-1 p-1">
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                SQL Main{" "}
-                            </p>
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                PostgreSQL{" "}
-                            </p>
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                MongoDB{" "}
-                            </p>
-                        </div>
-                    </motion.div>
+                        <motion.div
+                            className={`${dropDownMenu
+                                    ? "absolute top-12 right-1 bg-white w-36"
+                                    : "hidden"
+                                } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
+                        >
+                            <h3 className="p-2 w-max">{currSelectedDatabase}</h3>
+                            <hr />
+                            <div className="flex flex-col px-1 p-1">
+                                <p className="hover:bg-[#D1D5DB] px-1 rounded" onClick={()=>{
+                                    setCurrSelectedDatabase("SQL Main")
+                                    setDropDownMenu(false)
+                                }}>
+                                    SQL Main
+                                </p>
+                                <p className="hover:bg-[#D1D5DB] px-1 rounded" onClick={()=>{
+                                    setCurrSelectedDatabase("PostgreSQL")
+                                    setDropDownMenu(false)
+                                }}>
+                                    PostgreSQL
+                                </p>
+                                <p className="hover:bg-[#D1D5DB] px-1 rounded"
+                                onClick={
+                                    ()=>{
+                                        setCurrSelectedDatabase("MongoDB")
+                                        setDropDownMenu(false)
+                                    }
+                                
+                                }>
+                                    MongoDB
+                                </p>
+                            </div>
+                        </motion.div>
                 </AnimatePresence>
             </motion.div>
 
