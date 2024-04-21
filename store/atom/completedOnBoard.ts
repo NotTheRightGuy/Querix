@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 
 const completedOnBoard = atom<boolean>({
     key: 'completedOnBoard',
-    default: false,
+    default: true,
 });
 
 export default completedOnBoard;
