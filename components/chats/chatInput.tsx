@@ -61,7 +61,7 @@ export default function ChatInput() {
         })
             .then((res) => res.json())
             .then((data: any) => {
-                console.log(data, "this data");
+                // console.log(data, "this data");
                 if (data.query) {
                     saveChats(data.query, "code")
                     const newMessage = [
