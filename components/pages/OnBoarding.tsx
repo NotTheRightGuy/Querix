@@ -16,13 +16,15 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import connectionString from "@/store/atom/connectionString";
 import completedOnBoard from "@/store/atom/completedOnBoard";
 import { motion } from "framer-motion";
-
+import Link from "next/link";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
 import schema from "@/store/atom/schema";
 
 export function OnBoarding() {
     const [ConnectionStr, setConnectionStr] = useState("");
     const [loading, setloading] = useState(false);
     const [message, setMessage] = useState("");
+    const { usingDDL, setUsingDDL } = useIsUsingDDL();
 
     const setConnStr = useSetRecoilState<any>(connectionString);
     const setOnBoardComplete = useSetRecoilState(completedOnBoard);
@@ -120,7 +122,6 @@ export function OnBoarding() {
                 <Card className="w-[350px] border-none rounded-none bg-transparent shadow-none">
                     <CardHeader>
                         <CardTitle>Define your own DDL</CardTitle>
-                        {/* <CardDescription>Deploy your new project in one-click.</CardDescription> */}
                     </CardHeader>
                     <CardContent className="invisible">
                         <form>
@@ -136,7 +137,14 @@ export function OnBoarding() {
                         </form>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <Button>Define DDL</Button>
+                        <Button
+                            onClick={() => {
+                                setUsingDDL(true);
+                                setOnBoardComplete(true);
+                            }}
+                        >
+                            Define DDL
+                        </Button>
                     </CardFooter>
                 </Card>
             </motion.div>
