@@ -1,8 +1,10 @@
 "use client"
 
 import {motion, AnimatePresence} from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GreenDot from "@/public/green-dot";
+import { useUser} from '@clerk/nextjs'
+
 export default function Navbar(props:any) {
     const [dropDownMenu, setDropDownMenu] = useState(false);
 

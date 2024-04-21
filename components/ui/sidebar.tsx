@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "../../public/icon";
 import { motion } from "framer-motion";
 import Link from "next/link";
