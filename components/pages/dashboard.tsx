@@ -12,7 +12,7 @@ export function Dashboard() {
   const onBoardComplete = useRecoilValue(completedOnBoard);
 
   return (
-    <div className={`${onBoardComplete ? 'pl-24 ': ''} flex`}>
+    <div className={`${onBoardComplete ? 'pl-20 ': ''} flex`}>
       <Sidebar />
       {onBoardComplete ? (
         <>
