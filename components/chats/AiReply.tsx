@@ -6,7 +6,7 @@ export default function AiReply({ isLoading = false, message = "" }) {
             <Avatar />
             <div className="flex flex-col">
                 <div className="flex w-full justify-between items-center">
-                    <p className="font-medium">Quirx AI</p>
+                    <p className="font-medium">Querix AI</p>
                 </div>
                 <div className="rounded-xl rounded-tl-none bg-blue-500 p-2.5 text-sm w-fit text-white">
                     {isLoading ? "Processing ..." : message}
