@@ -16,36 +16,55 @@ function Settings() {
         empty: boolean;
     }
 
+    const [currUser, setCurrUser] = useState(null);
+
+
     const {isSignedIn, user} = useUser()
 
+    
     const [selectedDBDetails, setSelectedDBDetails] = useState<selectedDBDetails>({ dbName: '', dbURL: '', empty: true });
     const [defaultDBDetails, setDefaultDBDetails] = useState<selectedDBDetails>({ dbName: '', dbURL: '', empty: true });
     // const [allDB, setAllDB] = useState<selectedDBDetails[]>([]);
     const [editDetails, setEditDetails] = useState({ dbName: false, dbURL: false });
     const [errorMessage, setErrorMessage] = useState('');
+    
+    const saveUser = async () => {
+        const response = await fetch('/api/saveUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user }),
+        })
+        .then(res => res.json())
+        .then(res => {
+            setCurrUser(res.user)
+            console.log(res.user)
+        }) 
 
-    const allDB = [
-        {
-            dbName: 'SQL Transactional 2',
-            dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
-        },
-        {
-            dbName: 'SQL Transactional 3',
-            dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
-        },
-        {
-            dbName: 'SQL Transactional 4',
-            dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
-        },
-        {
-            dbName: 'SQL Transactional 2',
-            dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
-        },
-        {
-            dbName: 'SQL Transactional 2',
-            dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
-        },
-    ]
+    }
+    // const allDB = [
+    //     {
+    //         dbName: 'SQL Transactional 2',
+    //         dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
+    //     },
+    //     {
+    //         dbName: 'SQL Transactional 3',
+    //         dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
+    //     },
+    //     {
+    //         dbName: 'SQL Transactional 4',
+    //         dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
+    //     },
+    //     {
+    //         dbName: 'SQL Transactional 2',
+    //         dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
+    //     },
+    //     {
+    //         dbName: 'SQL Transactional 2',
+    //         dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres'
+    //     },
+    // ]
 
     useEffect(() => {
         // getDBDetails()
@@ -53,24 +72,24 @@ function Settings() {
         setDefaultDBDetails({ ...defaultDBDetails, dbName: 'SQL Main', dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres', empty: false })
     }, [])
     const getAllDB = async () => {
-        fetch('http://localhost:5000/api/v1/db', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                // setAllDB(data)
-                setSelectedDBDetails({ ...selectedDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
-                setDefaultDBDetails({ ...defaultDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
+    //     fetch('http://localhost:5000/api/v1/db', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             // setAllDB(data)
+    //             setSelectedDBDetails({ ...selectedDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
+    //             setDefaultDBDetails({ ...defaultDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
 
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                setErrorMessage(error)
-            });
-    }
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error:', error);
+    //             setErrorMessage(error)
+    //         });
+    // }
 
     const updateDBDetails = async () => {
         fetch('http://localhost:5000/api/v1/db', {
