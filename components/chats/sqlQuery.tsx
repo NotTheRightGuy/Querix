@@ -16,11 +16,10 @@ function jsonToQueryOutput(jsonData: any) {
     const headers = fields.map((field: any) => field.name);
     const formattedRows = rows.map((row:any) => {
         const rowData = fields.map((field:any) => row[field.name]);
-        return rowData.join(" | ");
+        return `${rowData.join(" | ")}<EOL>`;
     });
-
-    const output = [headers.join(" | "), ...formattedRows];
-    return output.join("\n\n\n");
+    const output = [`${headers.join(" | ")}<EOL>`, ...formattedRows];
+    return output.join("\n");
 }
 
 export default function SQLQuery({ query }: { query: string }) {
