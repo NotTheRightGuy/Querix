@@ -29,7 +29,7 @@ export default function User() {
                     />
                 </g>
                 <g transform="translate(2 11) scale(.71856)">
-                    <g stroke="#000" stroke-linecap="round">
+                    <g stroke="#000" strokeLinecap="round">
                         <path
                             d="M68 60.1c4.3-3.3 11-10 23.8-10.1a30 30 0 0 1 21.8 10.1"
                             strokeWidth="8.3"

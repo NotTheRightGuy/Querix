@@ -10,12 +10,13 @@ import useConnectionString from "@/store/hook/useConnectionString";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import terminalChat from "@/store/atom/terminalChat";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
 
 function jsonToQueryOutput(jsonData: any) {
     const { rows, fields } = jsonData;
     const headers = fields.map((field: any) => field.name);
-    const formattedRows = rows.map((row) => {
-        const rowData = fields.map((field) => row[field.name]);
+    const formattedRows = rows.map((row: any) => {
+        const rowData = fields.map((field: any) => row[field.name]);
         return `${rowData.join(" | ")}<EOL>`;
     });
     const output = [`${headers.join(" | ")}<EOL>`, ...formattedRows];

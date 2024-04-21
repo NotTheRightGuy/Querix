@@ -19,7 +19,7 @@ export async function POST(request:any, response:any) {
         if (user){
             if (type === "code"){
                 await db.collection("registeredUsers").updateOne({email:email},
-                {$push:{chats:{type:type, query:message}}
+                {$push:{chats:{type:type, query:query}}
                 })
             }
             else{
