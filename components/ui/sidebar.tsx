@@ -5,9 +5,12 @@ import Icon from "../../public/icon";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 export default function Sidebar() {
   const asideRef = useRef(null);
+
+  const { user, isSignedIn } = useUser() || "";
 
   const [name, setName] = useState("Jeet Gajjar");
   const [email, setEmail] = useState("jeetgajjar@gmail.com");
@@ -168,8 +171,8 @@ export default function Sidebar() {
           </div>
           <div className="overflow-clip">
             <div>
-              <p>{name}</p>
-              <p className="text-gray-500 text-xs">{email}</p>
+              <p>{isSignedIn && user.fullName || " "}</p>
+              <p className="text-gray-500 text-xs">{isSignedIn && user.emailAddresses[0].emailAddress}</p>
             </div>
           </div>
         </ul>

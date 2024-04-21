@@ -29,20 +29,30 @@ function Settings() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const saveUser = async () => {
-        const response = await fetch('/api/saveUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user }),
-        })
-            .then(res => res.json())
-            .then(res => {
-                setCurrUser(res.user)
-                console.log(res.user)
-            })
-
+        
     }
+    
+    // useEffect(() => {
+    //     if (isSignedIn && user) {
+    //         console.log(user, "user")
+    //         console.log(user,"usersssssssssssssssss")
+    //         console.log(user.emailAddresses[0].emailAddress,"email")
+        
+    //         fetch('/api/saveUser', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({id:user.id,email:user.emailAddresses[0].emailAddress,fullName:user.fullName}),
+    //         })
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 setCurrUser(res.user.connectionStrings)
+    //                 console.log(res.user.connectionStrings, "resssss")
+    //             })
+    //         // saveUser()
+    //     }
+    // }, [isSignedIn, user])
     const allDB = [
         {
             dbName: 'SQL Transactional 2',

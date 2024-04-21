@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Header() {
     const [dropDownMenu, setDropDownMenu] = useState(false);
-
+    const [currSelectedDatabase, setCurrSelectedDatabase] = useState("SQL Main");
     return (
         <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%] bg-white z-50">
             <div className="flex">
@@ -35,24 +35,41 @@ export default function Header() {
                         strokeLinejoin="round"
                     />
                 </svg>
-                Localhost
+                {currSelectedDatabase}
                 <div className="animate-pulse">
                     <GreenDot />
                 </div>
                 <AnimatePresence>
-                    <motion.div
-                        className={`${
-                            dropDownMenu
+                <motion.div
+                        className={`${dropDownMenu
                                 ? "absolute top-12 right-1 bg-white"
                                 : "hidden"
-                        } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
+                            } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
                     >
-                        <h3 className="p-2 w-max">Select Database</h3>
+                        <h3 className="p-2 w-max">{currSelectedDatabase}</h3>
                         <hr />
                         <div className="flex flex-col px-1 p-1">
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                Localhost{" "}
+                            <p className="hover:bg-[#D1D5DB] px-1 rounded" onClick={()=>{
+                                setCurrSelectedDatabase("SQL Main")
+                                setDropDownMenu(false)
+                            }}>
+                                SQL Main
+                            </p>
+                            <p className="hover:bg-[#D1D5DB] px-1 rounded" onClick={()=>{
+                                setCurrSelectedDatabase("PostgreSQL")
+                                setDropDownMenu(false)
+                            }}>
+                                PostgreSQL
+                            </p>
+                            <p className="hover:bg-[#D1D5DB] px-1 rounded"
+                            onClick={
+                                ()=>{
+                                    setCurrSelectedDatabase("MongoDB")
+                                    setDropDownMenu(false)
+                                }
+                            
+                            }>
+                                MongoDB
                             </p>
                         </div>
                     </motion.div>

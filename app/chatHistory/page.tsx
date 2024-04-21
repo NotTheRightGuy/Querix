@@ -1,10 +1,18 @@
 "use client";
-import Avatar from "@/public/avatar";
-import User from "@/public/user";
-import SQLQuery from "./sqlQuery";
-import { useEffect, useState } from "react";
+import Sidebar from "@/components/ui/sidebar";
+import ChatInput from "@/components/chats/chatInput";
+import Terminal from "@/components/ui/terminal";
+import Header from "@/components/ui/header";
+import ChatContainer from "@/components/chats/chatContainer";
+import { useRecoilValue } from "recoil";
+import completedOnBoard from "@/store/atom/completedOnBoard";
+import { OnBoarding } from "@/components/pages/OnBoarding";
+import PreviousChats from "@/components/chats/previousChats";
 import { useUser } from "@clerk/nextjs";
-export default function PreviousChats() {
+
+import { useState, useEffect } from "react";
+
+export default function Dashboard() {
     const [previousMessages, setPreviousMessages] = useState([]);
     const { user, isSignedIn } = useUser();
     const [currUser, setCurrUser] = useState(null);
@@ -28,8 +36,12 @@ export default function PreviousChats() {
         }
         console.log(user,"user")
     }, []);
-    return (
-        <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
+  return (
+    <div className={`pl-24 flex`}>
+      <Sidebar />
+          <div className="grid grid-cols-1 h-screen relative">
+            <Header />
+            <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
             {previousMessages.map(
                 (message:any) => {
                     if (message.type === "ai") {
@@ -70,6 +82,13 @@ export default function PreviousChats() {
                     }
                 }
             )}
-        </div>
-    );
+        </div>           
+            <ChatContainer />
+          </div>
+
+      <div className="fixed right-0 w-1/4">
+        <Terminal />
+      </div>
+    </div>
+  );
 }
