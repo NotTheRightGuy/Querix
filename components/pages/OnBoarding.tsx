@@ -17,6 +17,8 @@ import connectionString from "@/store/atom/connectionString";
 import completedOnBoard from "@/store/atom/completedOnBoard";
 import { motion } from "framer-motion";
 
+import schema from "@/store/atom/schema";
+
 export function OnBoarding() {
     const [ConnectionStr, setConnectionStr] = useState("");
     const [loading, setloading] = useState(false);
@@ -24,6 +26,8 @@ export function OnBoarding() {
 
     const setConnStr = useSetRecoilState<any>(connectionString);
     const setOnBoardComplete = useSetRecoilState(completedOnBoard);
+
+    const setSchema = useSetRecoilState(schema);
 
     const postConnectionString = async () => {
         setloading(true);
@@ -36,23 +40,23 @@ export function OnBoarding() {
             body: JSON.stringify({ connection_string: ConnectionStr }),
         })
             .then((res) => res.json())
-            .then((data) => console.log(data))
             .then((data) => {
                 setConnStr(ConnectionStr);
+                if (data.schema) {
+                    console.log("Connection String added");
+                    setSchema(data.schema);
+                    setloading(false);
+                } else {
+                    console.error("Failed to add connection string");
+                    setloading(false);
+                    setMessage("Failed to add connection string");
+                }
+
                 setOnBoardComplete(true);
             });
 
         // check if connections string is stored in the atom
         console.log("connection string atom", ConnectionStr);
-
-        if (response.ok) {
-            console.log("Connection String added");
-            setloading(false);
-        } else {
-            console.error("Failed to add connection string");
-            setloading(false);
-            setMessage("Failed to add connection string");
-        }
     };
     return (
         <div className="z-[1000] flex items-center w-screen h-screen backdrop-blur-sm justify-center space-x-2 ">
@@ -81,7 +85,7 @@ export function OnBoarding() {
                                         onChange={(e) =>
                                             setConnectionStr(e.target.value)
                                         }
-                                        placeholder="postgres://postgres.zasdmhfgdfsowcabo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:2404/postgres"
+                                        placeholder="postgres://postgres:postgres@localhost:5432/postgres"
                                     />
                                 </div>
                             </div>

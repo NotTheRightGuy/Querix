@@ -8,6 +8,20 @@ import { useSetRecoilState } from "recoil";
 import currentlyExecuting from "@/store/atom/currentlyExecuting";
 import useConnectionString from "@/store/hook/useConnectionString";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import terminalChat from "@/store/atom/terminalChat";
+
+function jsonToQueryOutput(jsonData: any) {
+    const { rows, fields } = jsonData;
+    const headers = fields.map((field: any) => field.name);
+    const formattedRows = rows.map((row) => {
+        const rowData = fields.map((field) => row[field.name]);
+        return rowData.join(" | ");
+    });
+
+    const output = [headers.join(" | "), ...formattedRows];
+    return output.join("\n\n\n");
+}
 
 export default function SQLQuery({ query }: { query: string }) {
     const [hasQueryExecuted, setHasQueryExecuted] = useState(false);
@@ -26,6 +40,9 @@ export default function SQLQuery({ query }: { query: string }) {
 
     const connectionString = useConnectionString();
     const setCurrentlyExecuting = useSetRecoilState(currentlyExecuting);
+
+    const [terminalChatState, setTerminalChatState] =
+        useRecoilState(terminalChat);
 
     function handleExecute() {
         console.log("Executing query:", query);
@@ -47,7 +64,16 @@ export default function SQLQuery({ query }: { query: string }) {
                     console.error(data.error);
                     setIsError(true);
                 } else {
-                    console.log(data);
+                    console.log("Query executed successfully.");
+                    const output = jsonToQueryOutput(data);
+                    console.log(output);
+                    setTerminalChatState((prev) => [
+                        ...prev,
+                        {
+                            command: query,
+                            output: output,
+                        },
+                    ]);
                     setHasQueryExecuted(true);
                 }
             });

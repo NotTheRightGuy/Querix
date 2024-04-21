@@ -1,8 +1,8 @@
 import { Client } from 'pg';
 
 export interface Column {
-  name: string;
-  type: string;
+  column_name: string;
+  column_type: string;
   nullable: boolean;
   default: string | null;
   primary_key: boolean;
@@ -42,8 +42,8 @@ export async function getSchema(connectionString: string): Promise<Schema> {
       const { rows: columns } = await client.query(columnQuery, [tableName]);
 
       schema[tableName] = columns.map(({ column_name, data_type, is_nullable, column_default, is_identity }) => ({
-        name: column_name,
-        type: data_type,
+        column_name: column_name,
+        column_type: data_type,
         nullable: is_nullable === 'YES',
         default: column_default,
         primary_key: is_identity === 'YES',

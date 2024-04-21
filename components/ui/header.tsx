@@ -35,7 +35,7 @@ export default function Header() {
                         strokeLinejoin="round"
                     />
                 </svg>
-                SQL Main
+                Localhost
                 <div className="animate-pulse">
                     <GreenDot />
                 </div>
@@ -52,15 +52,7 @@ export default function Header() {
                         <div className="flex flex-col px-1 p-1">
                             <p className="hover:bg-[#D1D5DB] px-1 rounded">
                                 {" "}
-                                SQL Main{" "}
-                            </p>
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                PostgreSQL{" "}
-                            </p>
-                            <p className="hover:bg-[#D1D5DB] px-1 rounded">
-                                {" "}
-                                MongoDB{" "}
+                                Localhost{" "}
                             </p>
                         </div>
                     </motion.div>
