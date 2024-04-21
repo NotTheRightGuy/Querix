@@ -14,6 +14,8 @@ export async function POST(req: NextResponse) {
     if (!content) {
         return Response.json({ err: "Error in generating SQL" });
     } else {
-        return Response.json(content);
+        return Response.json(
+            JSON.parse(content)
+        );
     }
 }

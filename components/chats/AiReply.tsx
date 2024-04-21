@@ -9,7 +9,7 @@ export default function AiReply({ isLoading = false, message = "" }) {
                     <p className="font-medium">Quirx AI</p>
                 </div>
                 <div className="rounded-xl rounded-tl-none bg-blue-500 p-2.5 text-sm w-fit text-white">
-                    {isLoading ? "Generating Query..." : message}
+                    {isLoading ? "Processing ..." : message}
                 </div>
             </div>
         </div>

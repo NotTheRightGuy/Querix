@@ -1,9 +1,8 @@
-import { useRecoilValue } from 'recoil';
-import { connectionString } from '../atom/connectionString';
+import { useRecoilValue } from "recoil";
+import schema from "../atom/schema";
 
-// Custom hook to get the values of the connectionString atom
-const useConnectionString = (): string => {
-    const stringValue = useRecoilValue(connectionString);
-    return stringValue;
-};
-export default useConnectionString;
+// Custom hook to get the values of the schema atom
+export default function useSchema() {
+    const schemaInUse = useRecoilValue(schema);
+    return schemaInUse;
+}
