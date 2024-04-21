@@ -1,4 +1,5 @@
-import User from "@/public/user";
+import Image from "next/image";
+import React from "react";
 
 export default function UserReply({ message = "" }) {
     return (
@@ -11,7 +12,7 @@ export default function UserReply({ message = "" }) {
                     {message}
                 </div>
             </div>
-            <User />
+            <Image src={`https://api.dicebear.com/8.x/big-ears-neutral/svg`} alt='icon' />
         </div>
     );
 }

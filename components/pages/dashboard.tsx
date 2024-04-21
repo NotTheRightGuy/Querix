@@ -17,7 +17,7 @@ export function Dashboard() {
 
 
   return (
-    <div className={`${onBoardComplete ? 'pl-24 ': ''} flex`}>
+    <div className={`${onBoardComplete ? 'pl-20 ': ''} flex`}>
       <Sidebar />
       {onBoardComplete ? (
         <>

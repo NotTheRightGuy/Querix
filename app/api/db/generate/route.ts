@@ -9,6 +9,8 @@ export async function POST(req: NextResponse) {
         return Response.json({ err: "Schema or question missing" });
     }
 
+    console.log(schema, question)
+
     const response = await generateSQL(question, schema);
     const content = response.lc_kwargs.content;
     if (!content) {

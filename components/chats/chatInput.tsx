@@ -13,6 +13,8 @@ export default function ChatInput() {
     const [chatMessages, setChatMessages] = useRecoilState(currentChatMessage);
     const schema = useSchema();
 
+    const [tempMessage, setTempMessage] = useState("");
+
     const sendMessage = () => {
         setChatMessages([
             ...chatMessages,
@@ -41,7 +43,7 @@ export default function ChatInput() {
         })
             .then((res) => res.json())
             .then((data: any) => {
-                console.log(data);
+                console.log(data, "this data");
                 if (data.query) {
                     const newMessage = [
                         {
@@ -54,10 +56,20 @@ export default function ChatInput() {
                             message: data.query,
                             isLoading: false,
                         },
+                        {
+                            type: "user",
+                            message: tempMessage,
+                            isLoading: false,
+                        },
                     ];
                     setChatMessages([...chatMessages, ...newMessage]);
                 } else {
                     const newMessage = [
+                        {
+                            type: "user",
+                            message: tempMessage,
+                            isLoading: false,
+                        },
                         {
                             type: "ai",
                             message: data.msg,
@@ -75,6 +87,7 @@ export default function ChatInput() {
                 placeholder="Ask questions related to your database."
                 onChange={(e) => {
                     setMessage(e.target.value);
+                    setTempMessage(e.target.value);
                 }}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
