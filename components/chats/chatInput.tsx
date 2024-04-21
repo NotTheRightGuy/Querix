@@ -15,7 +15,25 @@ export default function ChatInput() {
 
     const [tempMessage, setTempMessage] = useState("");
 
+    const saveChats = (message: string, type:string) => {
+        fetch("http://localhost:5000/api/saveChats", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                message:message,
+                type: type,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
+    }
+
     const sendMessage = () => {
+        saveChats(message, "user")
         setChatMessages([
             ...chatMessages,
             {
@@ -45,6 +63,7 @@ export default function ChatInput() {
             .then((data: any) => {
                 console.log(data, "this data");
                 if (data.query) {
+                    saveChats(data.query, "code")
                     const newMessage = [
                         {
                             type: "ai",
@@ -64,6 +83,7 @@ export default function ChatInput() {
                     ];
                     setChatMessages([...chatMessages, ...newMessage]);
                 } else {
+                    saveChats(data.msg, "ai")
                     const newMessage = [
                         {
                             type: "user",

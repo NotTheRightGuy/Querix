@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { motion } from 'framer-motion';
+import { useUser } from '@clerk/nextjs';
 
 function Settings() {
 
@@ -14,6 +15,8 @@ function Settings() {
         dbURL: string;
         empty: boolean;
     }
+
+    const {isSignedIn, user} = useUser()
 
     const [selectedDBDetails, setSelectedDBDetails] = useState<selectedDBDetails>({ dbName: '', dbURL: '', empty: true });
     const [defaultDBDetails, setDefaultDBDetails] = useState<selectedDBDetails>({ dbName: '', dbURL: '', empty: true });
