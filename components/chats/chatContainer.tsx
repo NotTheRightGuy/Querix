@@ -27,7 +27,7 @@ export default function ChatContainer() {
     console.log(messages, "thisis");
     return (
         <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
-            {messages.length === 0 && <EmptyState />}
+            {/* {messages.length === 0 && <EmptyState />} */}
             {messages.map(
                 (message: {
                     type: string;
