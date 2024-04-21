@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label"
 import ClipLoader from "react-spinners/ClipLoader";
 export function OnBoarding() {
 const [ConnectionStr, setConnectionStr] = useState('')  
-const [loading, setloading] = useState(true);
+const [loading, setloading] = useState(false);
 const [message, setMessage] = useState('')
 const postConnectionString = async () => {
   setloading(true)
@@ -35,8 +35,8 @@ const postConnectionString = async () => {
     }
 }
   return (
-    <div className="flex items-center w-screen justify-center space-x-2">
-    <div className="flex items-center justify-between bg-slate-100 rounded-sm p-4 space-x-2">
+    <div className="z-[1000] flex items-center w-screen h-screen backdrop-blur-sm justify-center space-x-2 ">
+    <div className="shadow-sm flex items-center justify-between bg-[#F9FAFB] border rounded-md p-4 space-x-2">
     <Card className="w-[350px] border-none rounded-none bg-transparent shadow-none">
       <CardHeader>
         <CardTitle>Connect to datasource</CardTitle>
@@ -62,7 +62,7 @@ const postConnectionString = async () => {
         </p>
       </CardFooter>
     </Card>
-    <div className="h-56 w-1 bg-slate-300"></div>
+    <div className="h-56 w-0.5 bg-slate-300"></div>
     <Card className="w-[350px] border-none rounded-none bg-transparent shadow-none">
       <CardHeader>
         <CardTitle>Define your own DDL</CardTitle>
