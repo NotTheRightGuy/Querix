@@ -7,6 +7,7 @@ import SQLQuery from "./sqlQuery";
 
 export default function ChatContainer() {
     const messages = useCurrentChatMessage();
+    console.log(messages);
     return (
         <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
             {messages.length === 0 && <EmptyState />}
