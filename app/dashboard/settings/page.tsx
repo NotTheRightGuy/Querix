@@ -72,24 +72,24 @@ function Settings() {
         setDefaultDBDetails({ ...defaultDBDetails, dbName: 'SQL Main', dbURL: 'postgres://postgres.wnbcdxihtfyqffzpvdgo:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres', empty: false })
     }, [])
     const getAllDB = async () => {
-        //     fetch('http://localhost:5000/api/v1/db', {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         }
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             // setAllDB(data)
-        //             setSelectedDBDetails({ ...selectedDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
-        //             setDefaultDBDetails({ ...defaultDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
+            fetch('http://localhost:5000/api/v1/db', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // setAllDB(data)
+                    setSelectedDBDetails({ ...selectedDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
+                    setDefaultDBDetails({ ...defaultDBDetails, dbName: data[0].dbName, dbURL: data[0].dbURL, empty: false })
 
-        //         })
-        //         .catch((error) => {
-        //             console.error('Error:', error);
-        //             setErrorMessage(error)
-        //         });
-        // }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    setErrorMessage(error)
+                });
+        }
 
         const updateDBDetails = async () => {
             fetch('http://localhost:5000/api/v1/db', {
@@ -262,5 +262,5 @@ function Settings() {
         )
     }
 
-}
-        export default Settings;
+
+export default Settings;
