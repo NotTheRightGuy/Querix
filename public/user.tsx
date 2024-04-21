@@ -32,19 +32,19 @@ export default function User() {
                     <g stroke="#000" stroke-linecap="round">
                         <path
                             d="M68 60.1c4.3-3.3 11-10 23.8-10.1a30 30 0 0 1 21.8 10.1"
-                            stroke-width="8.3"
+                            strokeWidth="8.3"
                         />
                         <path
                             d="M68 97.1c4.3-3.3 11-10 23.8-10.1a30 30 0 0 1 21.8 10.1"
-                            stroke-width="4.1"
+                            strokeWidth="4.1"
                         />
                         <path
                             d="M177 60.1c4.3-3.3 11-10 23.8-10.1a30 30 0 0 1 21.8 10.1"
-                            stroke-width="8.3"
+                            strokeWidth="8.3"
                         />
                         <path
                             d="M177 97.1c4.3-3.3 11-10 23.8-10.1a30 30 0 0 1 21.8 10.1"
-                            stroke-width="4.1"
+                            strokeWidth="4.1"
                         />
                     </g>
                 </g>
@@ -53,10 +53,10 @@ export default function User() {
                     <path
                         d="M33.4 22c-7.1 9.5-12 31.5-7.8 33.5 4.2 2.1 10.4 0 17 0"
                         stroke="#000"
-                        stroke-opacity=".5"
-                        stroke-width="4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity=".5"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     />
                 </g>
             </g>

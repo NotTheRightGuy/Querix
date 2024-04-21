@@ -157,7 +157,7 @@ function Settings() {
                                                 transform: 'translateX(-80px)'
 
                                             }}  
-                                            
+
                                             className='px-6 p-1 h-5/6 -translate-x-20 bg-slate-700 hover:bg-slate-900 duration-200 text-white text-sm rounded flex items-center' onClick={
                                                 () => {
                                                     setEditDetails({ ...editDetails, dbName: !editDetails.dbName })
@@ -220,7 +220,7 @@ function Settings() {
                                             }
                                         }>
                                             <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M3.75 2.75L14.25 9.5L3.75 16.25V2.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M3.75 2.75L14.25 9.5L3.75 16.25V2.75Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
 
                                             <p >

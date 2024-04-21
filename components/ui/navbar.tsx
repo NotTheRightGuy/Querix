@@ -38,9 +38,9 @@ export default function Navbar(props:any) {
                     <path
                         d="M4.5 7.25L9 11.75L13.5 7.25"
                         stroke="black"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                     />
                 </svg>
                 SQL Main
