@@ -4,12 +4,13 @@ import AiReply from "./AiReply";
 import UserReply from "./userReply";
 import EmptyState from "../ui/emptyState";
 import SQLQuery from "./sqlQuery";
-
+import { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
 export default function ChatContainer() {
     const messages = useCurrentChatMessage();
     return (
         <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
-            {messages.length === 0 && <EmptyState />}
+            {/* {messages.length === 0 && <EmptyState />} */}
             {messages.map(
                 (message: {
                     type: string;

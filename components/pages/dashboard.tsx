@@ -7,9 +7,14 @@ import ChatContainer from "../chats/chatContainer";
 import { useRecoilValue } from "recoil";
 import completedOnBoard from "@/store/atom/completedOnBoard";
 import { OnBoarding } from "./OnBoarding";
+import PreviousChats from "../chats/previousChats";
+import { useUser } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
 
 export function Dashboard() {
   const onBoardComplete = useRecoilValue(completedOnBoard);
+
+
 
   return (
     <div className={`${onBoardComplete ? 'pl-24 ': ''} flex`}>
@@ -18,6 +23,7 @@ export function Dashboard() {
         <>
           <div className="grid grid-cols-1 h-screen relative">
             <Header />
+            <PreviousChats></PreviousChats>            
             <ChatContainer />
             <ChatInput />
           </div>

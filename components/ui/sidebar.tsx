@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "../../public/icon";
 import { motion } from "framer-motion";
+import { useUser } from "@clerk/nextjs";
 
 export default function Sidebar() {
     const asideRef = useRef(null);
@@ -18,6 +19,8 @@ export default function Sidebar() {
             },
         },
     };
+    const {isSignedIn,user}=useUser()
+
 
     return (
         <motion.aside
