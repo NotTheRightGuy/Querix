@@ -2,32 +2,22 @@
 import useCurrentChatMessage from "@/store/hook/useCurrentChatMessage";
 import AiReply from "./AiReply";
 import UserReply from "./userReply";
-import EmptyState from "../ui/emptyState";
 import SQLQuery from "./sqlQuery";
-import { useEffect } from "react";
+import EmptyState from "../ui/emptyState";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
 
 export default function ChatContainer() {
     const messages = useCurrentChatMessage();
-    // useEffect(() => {
-    //     const lastMessage = messages[messages.length - 1];
-    //     // if (lastMessage && lastMessage.type === "ai" && lastMessage.isLoading) {
-    //         // setTimeout(() => {
-    //         //     const newMessage = [
-    //         //         {
-    //         //             type: "ai",
-    //         //             message: "I am a bot",
-    //         //             isLoading: false,
-    //         //         },
-    //         //     ];
-    //         //     messages.push(...newMessage);
-    //         // }, 1000);
-    //         messages.push(...lastMessage);
-    //     }
-    // }, [lastMessage]);
-    console.log(messages, "thisis");
+    const { usingDDL } = useIsUsingDDL();
+
     return (
-        <div className="mb-16 mt-20 px-4 w-[68vw] flex flex-col pb-52">
-            {/* {messages.length === 0 && <EmptyState />} */}
+        <div
+            className={`mb-16 mt-20 px-4 flex flex-col pb-52 ${
+                usingDDL ? "w-[100vw]" : "w-[65vw]"
+            } overflow-y-auto scrollbar-hide
+        }`}
+        >
+            {messages.length === 0 && <EmptyState />}
             {messages.map(
                 (message: {
                     type: string;

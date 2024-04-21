@@ -3,16 +3,32 @@
 import { motion, AnimatePresence } from "framer-motion";
 import GreenDot from "@/public/green-dot";
 import { useState } from "react";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
+import isUsingDDL from "@/store/atom/usingDDL";
 
 export default function Header() {
     const [dropDownMenu, setDropDownMenu] = useState(false);
     const [currSelectedDatabase, setCurrSelectedDatabase] = useState("SQL Main");
+    const { usingDDL, setUsingDDL } = useIsUsingDDL();
+
+    const isUsingDDL = usingDDL;
+
     return (
-        <header className="flex justify-between items-center p-4 h-16 border-b fixed top-0 w-[69%] bg-white z-50">
+        <header
+            className={`flex justify-between items-center p-4 h-16 border-b fixed top-0  bg-white z-50 ${
+                isUsingDDL ? "w-[100%]" : "w-[69%]"
+            }`}
+        >
             <div className="flex">
-                <p className="w-fit pl-2 font-medium">
-                    Start talking with your data.
-                </p>
+                {isUsingDDL ? (
+                    <div className="w-fit pl-2 font-medium">
+                        Describe your own data defination
+                    </div>
+                ) : (
+                    <p className="w-fit pl-2 font-medium">
+                        Start talking with your data.
+                    </p>
+                )}
             </div>
             <motion.div
                 onClick={() => {
