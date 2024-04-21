@@ -54,7 +54,7 @@ export default function Navbar(props:any) {
                 <AnimatePresence>
                         <motion.div
                             className={`${dropDownMenu
-                                    ? "absolute top-12 right-1 bg-white"
+                                    ? "absolute top-12 right-1 bg-white w-36"
                                     : "hidden"
                                 } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
                         >

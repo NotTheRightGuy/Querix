@@ -15,7 +15,7 @@ export default function Header() {
 
     return (
         <header
-            className={`flex justify-between items-center p-4 h-16 border-b fixed top-0  bg-white z-50 ${
+            className={`flex justify-between items-center p-4 h-16 border-b fixed top-0  bg-white z-40 ${
                 isUsingDDL ? "w-[100%]" : "w-[69%]"
             }`}
         >
@@ -58,9 +58,9 @@ export default function Header() {
                 <AnimatePresence>
                 <motion.div
                         className={`${dropDownMenu
-                                ? "absolute top-12 right-1 bg-white"
+                                ? "absolute top-12 right-1 bg-white w-36"
                                 : "hidden"
-                            } border-[1px] border-solid border-[#D1D5DB] rounded-lg`}
+                            } border-[1px] border-solid border-[#D1D5DB] rounded-lg `}
                     >
                         <h3 className="p-2 w-max">{currSelectedDatabase}</h3>
                         <hr />
