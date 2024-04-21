@@ -13,7 +13,7 @@ export default function ChatContainer() {
     return (
         <div
             className={`mb-16 mt-20 px-4 flex flex-col pb-52 ${
-                usingDDL ? "w-[100vw]" : "w-[65vw]"
+                usingDDL ? "w-[92vw]" : "w-[65vw]"
             } overflow-y-auto scrollbar-hide
         }`}
         >
