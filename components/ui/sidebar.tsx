@@ -9,7 +9,6 @@ import { useUser } from "@clerk/nextjs";
 
 export default function Sidebar() {
     const asideRef = useRef(null);
-  const asideRef = useRef(null);
 
   const { user, isSignedIn } = useUser() || "";
 
