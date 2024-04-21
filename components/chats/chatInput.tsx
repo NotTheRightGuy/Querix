@@ -7,33 +7,18 @@ import { useState } from "react";
 import currentChatMessage from "@/store/atom/currentChatMessage";
 import { useRecoilState } from "recoil";
 import useSchema from "@/store/hook/useSchema";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
 
 export default function ChatInput() {
     const [message, setMessage] = useState("");
     const [chatMessages, setChatMessages] = useRecoilState(currentChatMessage);
     const schema = useSchema();
 
+    const { usingDDL } = useIsUsingDDL();
+
     const [tempMessage, setTempMessage] = useState("");
 
-    const saveChats = (message: string, type:string) => {
-        fetch("http://localhost:5000/api/saveChats", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                message:message,
-                type: type,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            });
-    }
-
     const sendMessage = () => {
-        saveChats(message, "user")
         setChatMessages([
             ...chatMessages,
             {
@@ -63,7 +48,7 @@ export default function ChatInput() {
             .then((data: any) => {
                 // console.log(data, "this data");
                 if (data.query) {
-                    saveChats(data.query, "code")
+                    // saveChats(data.query, "code")
                     const newMessage = [
                         {
                             type: "ai",
@@ -83,7 +68,7 @@ export default function ChatInput() {
                     ];
                     setChatMessages([...chatMessages, ...newMessage]);
                 } else {
-                    saveChats(data.msg, "ai")
+                    // saveChats(data.msg, "ai")
                     const newMessage = [
                         {
                             type: "user",

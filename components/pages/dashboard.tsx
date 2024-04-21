@@ -8,33 +8,33 @@ import { useRecoilValue } from "recoil";
 import completedOnBoard from "@/store/atom/completedOnBoard";
 import { OnBoarding } from "./OnBoarding";
 import PreviousChats from "../chats/previousChats";
-import { useUser } from "@clerk/nextjs";
-import { useState, useEffect } from "react";
+import useIsUsingDDL from "@/store/hook/useIsUsingDDL";
 
 export function Dashboard() {
-  const onBoardComplete = useRecoilValue(completedOnBoard);
+    const onBoardComplete = useRecoilValue(completedOnBoard);
+    const { usingDDL, setUsingDDL } = useIsUsingDDL();
 
+    return (
+        <div className={`${onBoardComplete ? "pl-20 " : ""} flex`}>
+            <Sidebar />
+            {onBoardComplete ? (
+                <>
+                    <div className="grid grid-cols-1 h-screen relative">
+                        <Header />
+                        {/* <PreviousChats></PreviousChats>             */}
+                        <ChatContainer />
+                        <ChatInput />
+                    </div>
+                </>
+            ) : (
+                <OnBoarding />
+            )}
 
-
-  return (
-    <div className={`${onBoardComplete ? 'pl-20 ': ''} flex`}>
-      <Sidebar />
-      {onBoardComplete ? (
-        <>
-          <div className="grid grid-cols-1 h-screen relative">
-            <Header />
-            <PreviousChats></PreviousChats>            
-            <ChatContainer />
-            <ChatInput />
-          </div>
-        </>
-      ) : (
-        <OnBoarding />
-      )}
-
-      <div className="fixed right-0 w-1/4">
-        <Terminal />
-      </div>
-    </div>
-  );
+            {!usingDDL && (
+                <div className="fixed right-0 w-1/4">
+                    <Terminal />
+                </div>
+            )}
+        </div>
+    );
 }
